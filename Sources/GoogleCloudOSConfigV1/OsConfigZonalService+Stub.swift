@@ -20,57 +20,58 @@ import Foundation
 #endif
 import GoogleCloudWkt
 import GoogleLongrunning
+import GoogleRpc
 import GoogleCloudGax
 
 extension Clients {
-  protocol OsConfigServiceStub {
-    func executePatchJob(
-      request: ExecutePatchJobRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudOsconfigV1.PatchJob
+  protocol OsConfigZonalServiceStub {
+    func createOspolicyAssignment(
+      request: CreateOSPolicyAssignmentRequest, options: GoogleCloudGax.RequestOptions
+    ) async throws -> GoogleLongrunning.Operation
 
-    func getPatchJob(
-      request: GetPatchJobRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudOsconfigV1.PatchJob
+    func updateOspolicyAssignment(
+      request: UpdateOSPolicyAssignmentRequest, options: GoogleCloudGax.RequestOptions
+    ) async throws -> GoogleLongrunning.Operation
 
-    func cancelPatchJob(
-      request: CancelPatchJobRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudOsconfigV1.PatchJob
+    func getOspolicyAssignment(
+      request: GetOSPolicyAssignmentRequest, options: GoogleCloudGax.RequestOptions
+    ) async throws -> GoogleCloudOSConfigV1.OSPolicyAssignment
 
-    func listPatchJobs(
-      request: ListPatchJobsRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudOsconfigV1.ListPatchJobsResponse
+    func listOspolicyAssignments(
+      request: ListOSPolicyAssignmentsRequest, options: GoogleCloudGax.RequestOptions
+    ) async throws -> GoogleCloudOSConfigV1.ListOSPolicyAssignmentsResponse
 
-    func listPatchJobInstanceDetails(
-      request: ListPatchJobInstanceDetailsRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudOsconfigV1.ListPatchJobInstanceDetailsResponse
+    func listOspolicyAssignmentRevisions(
+      request: ListOSPolicyAssignmentRevisionsRequest, options: GoogleCloudGax.RequestOptions
+    ) async throws -> GoogleCloudOSConfigV1.ListOSPolicyAssignmentRevisionsResponse
 
-    func createPatchDeployment(
-      request: CreatePatchDeploymentRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudOsconfigV1.PatchDeployment
+    func deleteOspolicyAssignment(
+      request: DeleteOSPolicyAssignmentRequest, options: GoogleCloudGax.RequestOptions
+    ) async throws -> GoogleLongrunning.Operation
 
-    func getPatchDeployment(
-      request: GetPatchDeploymentRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudOsconfigV1.PatchDeployment
+    func getOspolicyAssignmentReport(
+      request: GetOSPolicyAssignmentReportRequest, options: GoogleCloudGax.RequestOptions
+    ) async throws -> GoogleCloudOSConfigV1.OSPolicyAssignmentReport
 
-    func listPatchDeployments(
-      request: ListPatchDeploymentsRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudOsconfigV1.ListPatchDeploymentsResponse
+    func listOspolicyAssignmentReports(
+      request: ListOSPolicyAssignmentReportsRequest, options: GoogleCloudGax.RequestOptions
+    ) async throws -> GoogleCloudOSConfigV1.ListOSPolicyAssignmentReportsResponse
 
-    func deletePatchDeployment(
-      request: DeletePatchDeploymentRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws
+    func getInventory(
+      request: GetInventoryRequest, options: GoogleCloudGax.RequestOptions
+    ) async throws -> GoogleCloudOSConfigV1.Inventory
 
-    func updatePatchDeployment(
-      request: UpdatePatchDeploymentRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudOsconfigV1.PatchDeployment
+    func listInventories(
+      request: ListInventoriesRequest, options: GoogleCloudGax.RequestOptions
+    ) async throws -> GoogleCloudOSConfigV1.ListInventoriesResponse
 
-    func pausePatchDeployment(
-      request: PausePatchDeploymentRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudOsconfigV1.PatchDeployment
+    func getVulnerabilityReport(
+      request: GetVulnerabilityReportRequest, options: GoogleCloudGax.RequestOptions
+    ) async throws -> GoogleCloudOSConfigV1.VulnerabilityReport
 
-    func resumePatchDeployment(
-      request: ResumePatchDeploymentRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudOsconfigV1.PatchDeployment
+    func listVulnerabilityReports(
+      request: ListVulnerabilityReportsRequest, options: GoogleCloudGax.RequestOptions
+    ) async throws -> GoogleCloudOSConfigV1.ListVulnerabilityReportsResponse
 
     func getOperation(
       request: GoogleLongrunning.GetOperationRequest, options: GoogleCloudGax.RequestOptions
@@ -81,7 +82,7 @@ extension Clients {
     ) async throws
   }
 
-  class OsConfigServiceTransport: OsConfigServiceStub {
+  class OsConfigZonalServiceTransport: OsConfigZonalServiceStub {
     let inner: GoogleCloudGax.HTTPClient
 
     public init(_ options: GoogleCloudGax.ClientOptions = .init()) throws {
@@ -89,148 +90,66 @@ extension Clients {
         from: options, withDefaultEndpoint: "https://osconfig.googleapis.com")
     }
 
-    public func executePatchJob(
-      request: ExecutePatchJobRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudOsconfigV1.PatchJob {
+    public func createOspolicyAssignment(
+      request: CreateOSPolicyAssignmentRequest, options: GoogleCloudGax.RequestOptions
+    ) async throws -> GoogleLongrunning.Operation {
       let path = try { () throws -> Swift.String in
         guard let pathVariable0 = request.parent as Swift.String?, !pathVariable0.isEmpty else {
           throw GoogleCloudGax.RequestError.binding("'request.parent' is not set or is empty")
         }
-        return "/v1/\(pathVariable0)/patchJobs:execute"
-      }()
-      let query = [
-        URLQueryItem(name: "$alt", value: "json;enum-encoding=int")
-      ]
-      var req = try await self.inner.Request(path: path, query: query)
-      req.httpMethod = "POST"
-      req.setValue(Clients.clientHeader, forHTTPHeaderField: "X-Goog-Api-Client")
-      req.setValue("application/json", forHTTPHeaderField: "Content-Type")
-      req.httpBody = try JSONEncoder().encode(request)
-      let (data, _) = try await self.inner.rpc(for: req).get()
-      return try GoogleCloudWkt._ProtoJSONDecoder().decode(
-        GoogleCloudOsconfigV1.PatchJob.self, from: data)
-    }
-
-    public func getPatchJob(
-      request: GetPatchJobRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudOsconfigV1.PatchJob {
-      let path = try { () throws -> Swift.String in
-        guard let pathVariable0 = request.name as Swift.String?, !pathVariable0.isEmpty else {
-          throw GoogleCloudGax.RequestError.binding("'request.name' is not set or is empty")
-        }
-        return "/v1/\(pathVariable0)"
-      }()
-      let query = [
-        URLQueryItem(name: "$alt", value: "json;enum-encoding=int")
-      ]
-      var req = try await self.inner.Request(path: path, query: query)
-      req.httpMethod = "GET"
-      req.setValue(Clients.clientHeader, forHTTPHeaderField: "X-Goog-Api-Client")
-      let (data, _) = try await self.inner.rpc(for: req).get()
-      return try GoogleCloudWkt._ProtoJSONDecoder().decode(
-        GoogleCloudOsconfigV1.PatchJob.self, from: data)
-    }
-
-    public func cancelPatchJob(
-      request: CancelPatchJobRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudOsconfigV1.PatchJob {
-      let path = try { () throws -> Swift.String in
-        guard let pathVariable0 = request.name as Swift.String?, !pathVariable0.isEmpty else {
-          throw GoogleCloudGax.RequestError.binding("'request.name' is not set or is empty")
-        }
-        return "/v1/\(pathVariable0):cancel"
-      }()
-      let query = [
-        URLQueryItem(name: "$alt", value: "json;enum-encoding=int")
-      ]
-      var req = try await self.inner.Request(path: path, query: query)
-      req.httpMethod = "POST"
-      req.setValue(Clients.clientHeader, forHTTPHeaderField: "X-Goog-Api-Client")
-      req.setValue("application/json", forHTTPHeaderField: "Content-Type")
-      req.httpBody = try JSONEncoder().encode(request)
-      let (data, _) = try await self.inner.rpc(for: req).get()
-      return try GoogleCloudWkt._ProtoJSONDecoder().decode(
-        GoogleCloudOsconfigV1.PatchJob.self, from: data)
-    }
-
-    public func listPatchJobs(
-      request: ListPatchJobsRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudOsconfigV1.ListPatchJobsResponse {
-      let path = try { () throws -> Swift.String in
-        guard let pathVariable0 = request.parent as Swift.String?, !pathVariable0.isEmpty else {
-          throw GoogleCloudGax.RequestError.binding("'request.parent' is not set or is empty")
-        }
-        return "/v1/\(pathVariable0)/patchJobs"
-      }()
-      var query = [
-        URLQueryItem(name: "$alt", value: "json;enum-encoding=int")
-      ]
-      let encoder = GoogleCloudGax.QueryParameterEncoder()
-      query.append(contentsOf: try encoder.encode(request.pageSize, prefix: "pageSize"))
-      query.append(contentsOf: try encoder.encode(request.pageToken, prefix: "pageToken"))
-      query.append(contentsOf: try encoder.encode(request.filter, prefix: "filter"))
-      var req = try await self.inner.Request(path: path, query: query)
-      req.httpMethod = "GET"
-      req.setValue(Clients.clientHeader, forHTTPHeaderField: "X-Goog-Api-Client")
-      let (data, _) = try await self.inner.rpc(for: req).get()
-      return try GoogleCloudWkt._ProtoJSONDecoder().decode(
-        GoogleCloudOsconfigV1.ListPatchJobsResponse.self, from: data)
-    }
-
-    public func listPatchJobInstanceDetails(
-      request: ListPatchJobInstanceDetailsRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudOsconfigV1.ListPatchJobInstanceDetailsResponse {
-      let path = try { () throws -> Swift.String in
-        guard let pathVariable0 = request.parent as Swift.String?, !pathVariable0.isEmpty else {
-          throw GoogleCloudGax.RequestError.binding("'request.parent' is not set or is empty")
-        }
-        return "/v1/\(pathVariable0)/instanceDetails"
-      }()
-      var query = [
-        URLQueryItem(name: "$alt", value: "json;enum-encoding=int")
-      ]
-      let encoder = GoogleCloudGax.QueryParameterEncoder()
-      query.append(contentsOf: try encoder.encode(request.pageSize, prefix: "pageSize"))
-      query.append(contentsOf: try encoder.encode(request.pageToken, prefix: "pageToken"))
-      query.append(contentsOf: try encoder.encode(request.filter, prefix: "filter"))
-      var req = try await self.inner.Request(path: path, query: query)
-      req.httpMethod = "GET"
-      req.setValue(Clients.clientHeader, forHTTPHeaderField: "X-Goog-Api-Client")
-      let (data, _) = try await self.inner.rpc(for: req).get()
-      return try GoogleCloudWkt._ProtoJSONDecoder().decode(
-        GoogleCloudOsconfigV1.ListPatchJobInstanceDetailsResponse.self, from: data)
-    }
-
-    public func createPatchDeployment(
-      request: CreatePatchDeploymentRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudOsconfigV1.PatchDeployment {
-      let path = try { () throws -> Swift.String in
-        guard let pathVariable0 = request.parent as Swift.String?, !pathVariable0.isEmpty else {
-          throw GoogleCloudGax.RequestError.binding("'request.parent' is not set or is empty")
-        }
-        return "/v1/\(pathVariable0)/patchDeployments"
+        return "/v1/\(pathVariable0)/osPolicyAssignments"
       }()
       var query = [
         URLQueryItem(name: "$alt", value: "json;enum-encoding=int")
       ]
       let encoder = GoogleCloudGax.QueryParameterEncoder()
       query.append(
-        contentsOf: try encoder.encode(request.patchDeploymentId, prefix: "patchDeploymentId"))
+        contentsOf: try encoder.encode(request.osPolicyAssignmentId, prefix: "osPolicyAssignmentId")
+      )
       var req = try await self.inner.Request(path: path, query: query)
       req.httpMethod = "POST"
       req.setValue(Clients.clientHeader, forHTTPHeaderField: "X-Goog-Api-Client")
-      if let body = request.patchDeployment {
+      if let body = request.osPolicyAssignment {
         req.setValue("application/json", forHTTPHeaderField: "Content-Type")
         req.httpBody = try JSONEncoder().encode(body)
       }
       let (data, _) = try await self.inner.rpc(for: req).get()
       return try GoogleCloudWkt._ProtoJSONDecoder().decode(
-        GoogleCloudOsconfigV1.PatchDeployment.self, from: data)
+        GoogleLongrunning.Operation.self, from: data)
     }
 
-    public func getPatchDeployment(
-      request: GetPatchDeploymentRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudOsconfigV1.PatchDeployment {
+    public func updateOspolicyAssignment(
+      request: UpdateOSPolicyAssignmentRequest, options: GoogleCloudGax.RequestOptions
+    ) async throws -> GoogleLongrunning.Operation {
+      let path = try { () throws -> Swift.String in
+        guard let pathVariable0 = request.osPolicyAssignment.map({ $0.name }),
+          !pathVariable0.isEmpty
+        else {
+          throw GoogleCloudGax.RequestError.binding(
+            "'request.os_policy_assignment.name' is not set or is empty")
+        }
+        return "/v1/\(pathVariable0)"
+      }()
+      var query = [
+        URLQueryItem(name: "$alt", value: "json;enum-encoding=int")
+      ]
+      let encoder = GoogleCloudGax.QueryParameterEncoder()
+      query.append(contentsOf: try encoder.encode(request.updateMask, prefix: "updateMask"))
+      var req = try await self.inner.Request(path: path, query: query)
+      req.httpMethod = "PATCH"
+      req.setValue(Clients.clientHeader, forHTTPHeaderField: "X-Goog-Api-Client")
+      if let body = request.osPolicyAssignment {
+        req.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        req.httpBody = try JSONEncoder().encode(body)
+      }
+      let (data, _) = try await self.inner.rpc(for: req).get()
+      return try GoogleCloudWkt._ProtoJSONDecoder().decode(
+        GoogleLongrunning.Operation.self, from: data)
+    }
+
+    public func getOspolicyAssignment(
+      request: GetOSPolicyAssignmentRequest, options: GoogleCloudGax.RequestOptions
+    ) async throws -> GoogleCloudOSConfigV1.OSPolicyAssignment {
       let path = try { () throws -> Swift.String in
         guard let pathVariable0 = request.name as Swift.String?, !pathVariable0.isEmpty else {
           throw GoogleCloudGax.RequestError.binding("'request.name' is not set or is empty")
@@ -245,17 +164,17 @@ extension Clients {
       req.setValue(Clients.clientHeader, forHTTPHeaderField: "X-Goog-Api-Client")
       let (data, _) = try await self.inner.rpc(for: req).get()
       return try GoogleCloudWkt._ProtoJSONDecoder().decode(
-        GoogleCloudOsconfigV1.PatchDeployment.self, from: data)
+        GoogleCloudOSConfigV1.OSPolicyAssignment.self, from: data)
     }
 
-    public func listPatchDeployments(
-      request: ListPatchDeploymentsRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudOsconfigV1.ListPatchDeploymentsResponse {
+    public func listOspolicyAssignments(
+      request: ListOSPolicyAssignmentsRequest, options: GoogleCloudGax.RequestOptions
+    ) async throws -> GoogleCloudOSConfigV1.ListOSPolicyAssignmentsResponse {
       let path = try { () throws -> Swift.String in
         guard let pathVariable0 = request.parent as Swift.String?, !pathVariable0.isEmpty else {
           throw GoogleCloudGax.RequestError.binding("'request.parent' is not set or is empty")
         }
-        return "/v1/\(pathVariable0)/patchDeployments"
+        return "/v1/\(pathVariable0)/osPolicyAssignments"
       }()
       var query = [
         URLQueryItem(name: "$alt", value: "json;enum-encoding=int")
@@ -268,12 +187,35 @@ extension Clients {
       req.setValue(Clients.clientHeader, forHTTPHeaderField: "X-Goog-Api-Client")
       let (data, _) = try await self.inner.rpc(for: req).get()
       return try GoogleCloudWkt._ProtoJSONDecoder().decode(
-        GoogleCloudOsconfigV1.ListPatchDeploymentsResponse.self, from: data)
+        GoogleCloudOSConfigV1.ListOSPolicyAssignmentsResponse.self, from: data)
     }
 
-    public func deletePatchDeployment(
-      request: DeletePatchDeploymentRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws {
+    public func listOspolicyAssignmentRevisions(
+      request: ListOSPolicyAssignmentRevisionsRequest, options: GoogleCloudGax.RequestOptions
+    ) async throws -> GoogleCloudOSConfigV1.ListOSPolicyAssignmentRevisionsResponse {
+      let path = try { () throws -> Swift.String in
+        guard let pathVariable0 = request.name as Swift.String?, !pathVariable0.isEmpty else {
+          throw GoogleCloudGax.RequestError.binding("'request.name' is not set or is empty")
+        }
+        return "/v1/\(pathVariable0):listRevisions"
+      }()
+      var query = [
+        URLQueryItem(name: "$alt", value: "json;enum-encoding=int")
+      ]
+      let encoder = GoogleCloudGax.QueryParameterEncoder()
+      query.append(contentsOf: try encoder.encode(request.pageSize, prefix: "pageSize"))
+      query.append(contentsOf: try encoder.encode(request.pageToken, prefix: "pageToken"))
+      var req = try await self.inner.Request(path: path, query: query)
+      req.httpMethod = "GET"
+      req.setValue(Clients.clientHeader, forHTTPHeaderField: "X-Goog-Api-Client")
+      let (data, _) = try await self.inner.rpc(for: req).get()
+      return try GoogleCloudWkt._ProtoJSONDecoder().decode(
+        GoogleCloudOSConfigV1.ListOSPolicyAssignmentRevisionsResponse.self, from: data)
+    }
+
+    public func deleteOspolicyAssignment(
+      request: DeleteOSPolicyAssignmentRequest, options: GoogleCloudGax.RequestOptions
+    ) async throws -> GoogleLongrunning.Operation {
       let path = try { () throws -> Swift.String in
         guard let pathVariable0 = request.name as Swift.String?, !pathVariable0.isEmpty else {
           throw GoogleCloudGax.RequestError.binding("'request.name' is not set or is empty")
@@ -286,17 +228,61 @@ extension Clients {
       var req = try await self.inner.Request(path: path, query: query)
       req.httpMethod = "DELETE"
       req.setValue(Clients.clientHeader, forHTTPHeaderField: "X-Goog-Api-Client")
-      _ = try await self.inner.rpc(for: req).get()
+      let (data, _) = try await self.inner.rpc(for: req).get()
+      return try GoogleCloudWkt._ProtoJSONDecoder().decode(
+        GoogleLongrunning.Operation.self, from: data)
     }
 
-    public func updatePatchDeployment(
-      request: UpdatePatchDeploymentRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudOsconfigV1.PatchDeployment {
+    public func getOspolicyAssignmentReport(
+      request: GetOSPolicyAssignmentReportRequest, options: GoogleCloudGax.RequestOptions
+    ) async throws -> GoogleCloudOSConfigV1.OSPolicyAssignmentReport {
       let path = try { () throws -> Swift.String in
-        guard let pathVariable0 = request.patchDeployment.map({ $0.name }), !pathVariable0.isEmpty
-        else {
-          throw GoogleCloudGax.RequestError.binding(
-            "'request.patch_deployment.name' is not set or is empty")
+        guard let pathVariable0 = request.name as Swift.String?, !pathVariable0.isEmpty else {
+          throw GoogleCloudGax.RequestError.binding("'request.name' is not set or is empty")
+        }
+        return "/v1/\(pathVariable0)"
+      }()
+      let query = [
+        URLQueryItem(name: "$alt", value: "json;enum-encoding=int")
+      ]
+      var req = try await self.inner.Request(path: path, query: query)
+      req.httpMethod = "GET"
+      req.setValue(Clients.clientHeader, forHTTPHeaderField: "X-Goog-Api-Client")
+      let (data, _) = try await self.inner.rpc(for: req).get()
+      return try GoogleCloudWkt._ProtoJSONDecoder().decode(
+        GoogleCloudOSConfigV1.OSPolicyAssignmentReport.self, from: data)
+    }
+
+    public func listOspolicyAssignmentReports(
+      request: ListOSPolicyAssignmentReportsRequest, options: GoogleCloudGax.RequestOptions
+    ) async throws -> GoogleCloudOSConfigV1.ListOSPolicyAssignmentReportsResponse {
+      let path = try { () throws -> Swift.String in
+        guard let pathVariable0 = request.parent as Swift.String?, !pathVariable0.isEmpty else {
+          throw GoogleCloudGax.RequestError.binding("'request.parent' is not set or is empty")
+        }
+        return "/v1/\(pathVariable0)/reports"
+      }()
+      var query = [
+        URLQueryItem(name: "$alt", value: "json;enum-encoding=int")
+      ]
+      let encoder = GoogleCloudGax.QueryParameterEncoder()
+      query.append(contentsOf: try encoder.encode(request.pageSize, prefix: "pageSize"))
+      query.append(contentsOf: try encoder.encode(request.filter, prefix: "filter"))
+      query.append(contentsOf: try encoder.encode(request.pageToken, prefix: "pageToken"))
+      var req = try await self.inner.Request(path: path, query: query)
+      req.httpMethod = "GET"
+      req.setValue(Clients.clientHeader, forHTTPHeaderField: "X-Goog-Api-Client")
+      let (data, _) = try await self.inner.rpc(for: req).get()
+      return try GoogleCloudWkt._ProtoJSONDecoder().decode(
+        GoogleCloudOSConfigV1.ListOSPolicyAssignmentReportsResponse.self, from: data)
+    }
+
+    public func getInventory(
+      request: GetInventoryRequest, options: GoogleCloudGax.RequestOptions
+    ) async throws -> GoogleCloudOSConfigV1.Inventory {
+      let path = try { () throws -> Swift.String in
+        guard let pathVariable0 = request.name as Swift.String?, !pathVariable0.isEmpty else {
+          throw GoogleCloudGax.RequestError.binding("'request.name' is not set or is empty")
         }
         return "/v1/\(pathVariable0)"
       }()
@@ -304,61 +290,82 @@ extension Clients {
         URLQueryItem(name: "$alt", value: "json;enum-encoding=int")
       ]
       let encoder = GoogleCloudGax.QueryParameterEncoder()
-      query.append(contentsOf: try encoder.encode(request.updateMask, prefix: "updateMask"))
+      query.append(contentsOf: try encoder.encode(request.view, prefix: "view"))
       var req = try await self.inner.Request(path: path, query: query)
-      req.httpMethod = "PATCH"
+      req.httpMethod = "GET"
       req.setValue(Clients.clientHeader, forHTTPHeaderField: "X-Goog-Api-Client")
-      if let body = request.patchDeployment {
-        req.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        req.httpBody = try JSONEncoder().encode(body)
-      }
       let (data, _) = try await self.inner.rpc(for: req).get()
       return try GoogleCloudWkt._ProtoJSONDecoder().decode(
-        GoogleCloudOsconfigV1.PatchDeployment.self, from: data)
+        GoogleCloudOSConfigV1.Inventory.self, from: data)
     }
 
-    public func pausePatchDeployment(
-      request: PausePatchDeploymentRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudOsconfigV1.PatchDeployment {
+    public func listInventories(
+      request: ListInventoriesRequest, options: GoogleCloudGax.RequestOptions
+    ) async throws -> GoogleCloudOSConfigV1.ListInventoriesResponse {
+      let path = try { () throws -> Swift.String in
+        guard let pathVariable0 = request.parent as Swift.String?, !pathVariable0.isEmpty else {
+          throw GoogleCloudGax.RequestError.binding("'request.parent' is not set or is empty")
+        }
+        return "/v1/\(pathVariable0)/inventories"
+      }()
+      var query = [
+        URLQueryItem(name: "$alt", value: "json;enum-encoding=int")
+      ]
+      let encoder = GoogleCloudGax.QueryParameterEncoder()
+      query.append(contentsOf: try encoder.encode(request.view, prefix: "view"))
+      query.append(contentsOf: try encoder.encode(request.pageSize, prefix: "pageSize"))
+      query.append(contentsOf: try encoder.encode(request.pageToken, prefix: "pageToken"))
+      query.append(contentsOf: try encoder.encode(request.filter, prefix: "filter"))
+      var req = try await self.inner.Request(path: path, query: query)
+      req.httpMethod = "GET"
+      req.setValue(Clients.clientHeader, forHTTPHeaderField: "X-Goog-Api-Client")
+      let (data, _) = try await self.inner.rpc(for: req).get()
+      return try GoogleCloudWkt._ProtoJSONDecoder().decode(
+        GoogleCloudOSConfigV1.ListInventoriesResponse.self, from: data)
+    }
+
+    public func getVulnerabilityReport(
+      request: GetVulnerabilityReportRequest, options: GoogleCloudGax.RequestOptions
+    ) async throws -> GoogleCloudOSConfigV1.VulnerabilityReport {
       let path = try { () throws -> Swift.String in
         guard let pathVariable0 = request.name as Swift.String?, !pathVariable0.isEmpty else {
           throw GoogleCloudGax.RequestError.binding("'request.name' is not set or is empty")
         }
-        return "/v1/\(pathVariable0):pause"
+        return "/v1/\(pathVariable0)"
       }()
       let query = [
         URLQueryItem(name: "$alt", value: "json;enum-encoding=int")
       ]
       var req = try await self.inner.Request(path: path, query: query)
-      req.httpMethod = "POST"
+      req.httpMethod = "GET"
       req.setValue(Clients.clientHeader, forHTTPHeaderField: "X-Goog-Api-Client")
-      req.setValue("application/json", forHTTPHeaderField: "Content-Type")
-      req.httpBody = try JSONEncoder().encode(request)
       let (data, _) = try await self.inner.rpc(for: req).get()
       return try GoogleCloudWkt._ProtoJSONDecoder().decode(
-        GoogleCloudOsconfigV1.PatchDeployment.self, from: data)
+        GoogleCloudOSConfigV1.VulnerabilityReport.self, from: data)
     }
 
-    public func resumePatchDeployment(
-      request: ResumePatchDeploymentRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudOsconfigV1.PatchDeployment {
+    public func listVulnerabilityReports(
+      request: ListVulnerabilityReportsRequest, options: GoogleCloudGax.RequestOptions
+    ) async throws -> GoogleCloudOSConfigV1.ListVulnerabilityReportsResponse {
       let path = try { () throws -> Swift.String in
-        guard let pathVariable0 = request.name as Swift.String?, !pathVariable0.isEmpty else {
-          throw GoogleCloudGax.RequestError.binding("'request.name' is not set or is empty")
+        guard let pathVariable0 = request.parent as Swift.String?, !pathVariable0.isEmpty else {
+          throw GoogleCloudGax.RequestError.binding("'request.parent' is not set or is empty")
         }
-        return "/v1/\(pathVariable0):resume"
+        return "/v1/\(pathVariable0)/vulnerabilityReports"
       }()
-      let query = [
+      var query = [
         URLQueryItem(name: "$alt", value: "json;enum-encoding=int")
       ]
+      let encoder = GoogleCloudGax.QueryParameterEncoder()
+      query.append(contentsOf: try encoder.encode(request.pageSize, prefix: "pageSize"))
+      query.append(contentsOf: try encoder.encode(request.pageToken, prefix: "pageToken"))
+      query.append(contentsOf: try encoder.encode(request.filter, prefix: "filter"))
       var req = try await self.inner.Request(path: path, query: query)
-      req.httpMethod = "POST"
+      req.httpMethod = "GET"
       req.setValue(Clients.clientHeader, forHTTPHeaderField: "X-Goog-Api-Client")
-      req.setValue("application/json", forHTTPHeaderField: "Content-Type")
-      req.httpBody = try JSONEncoder().encode(request)
       let (data, _) = try await self.inner.rpc(for: req).get()
       return try GoogleCloudWkt._ProtoJSONDecoder().decode(
-        GoogleCloudOsconfigV1.PatchDeployment.self, from: data)
+        GoogleCloudOSConfigV1.ListVulnerabilityReportsResponse.self, from: data)
     }
 
     public func getOperation(

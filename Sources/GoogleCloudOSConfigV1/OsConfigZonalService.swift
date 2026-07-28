@@ -212,7 +212,7 @@ public class OsConfigZonalServiceClient: Clients.OsConfigZonalServiceProtocol {
   /// @Snippet(path: "OsConfigZonalService_GetOSPolicyAssignment")
   public func getOspolicyAssignment(
     request: GetOSPolicyAssignmentRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudOsconfigV1.OSPolicyAssignment {
+  ) async throws -> GoogleCloudOSConfigV1.OSPolicyAssignment {
     try await self.inner.getOspolicyAssignment(request: request, options: options)
   }
 
@@ -223,7 +223,7 @@ public class OsConfigZonalServiceClient: Clients.OsConfigZonalServiceProtocol {
   /// @Snippet(path: "OsConfigZonalService_ListOSPolicyAssignments")
   public func listOspolicyAssignments(
     request: ListOSPolicyAssignmentsRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudOsconfigV1.ListOSPolicyAssignmentsResponse {
+  ) async throws -> GoogleCloudOSConfigV1.ListOSPolicyAssignmentsResponse {
     try await self.inner.listOspolicyAssignments(request: request, options: options)
   }
 
@@ -236,7 +236,7 @@ public class OsConfigZonalServiceClient: Clients.OsConfigZonalServiceProtocol {
     byItem: ListOSPolicyAssignmentsRequest, options: GoogleCloudGax.RequestOptions
   ) throws -> any AsyncSequence<OSPolicyAssignment, Swift.Error> {
     let listRpc = {
-      (token: Swift.String) async throws -> GoogleCloudOsconfigV1.ListOSPolicyAssignmentsResponse in
+      (token: Swift.String) async throws -> GoogleCloudOSConfigV1.ListOSPolicyAssignmentsResponse in
       var request = byItem
       request.pageToken = token
       return try await self.listOspolicyAssignments(request: request, options: options)
@@ -249,7 +249,7 @@ public class OsConfigZonalServiceClient: Clients.OsConfigZonalServiceProtocol {
   /// @Snippet(path: "OsConfigZonalService_ListOSPolicyAssignmentRevisions")
   public func listOspolicyAssignmentRevisions(
     request: ListOSPolicyAssignmentRevisionsRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudOsconfigV1.ListOSPolicyAssignmentRevisionsResponse {
+  ) async throws -> GoogleCloudOSConfigV1.ListOSPolicyAssignmentRevisionsResponse {
     try await self.inner.listOspolicyAssignmentRevisions(request: request, options: options)
   }
 
@@ -261,7 +261,7 @@ public class OsConfigZonalServiceClient: Clients.OsConfigZonalServiceProtocol {
   ) throws -> any AsyncSequence<OSPolicyAssignment, Swift.Error> {
     let listRpc = {
       (token: Swift.String) async throws
-        -> GoogleCloudOsconfigV1.ListOSPolicyAssignmentRevisionsResponse in
+        -> GoogleCloudOSConfigV1.ListOSPolicyAssignmentRevisionsResponse in
       var request = byItem
       request.pageToken = token
       return try await self.listOspolicyAssignmentRevisions(request: request, options: options)
@@ -352,7 +352,7 @@ public class OsConfigZonalServiceClient: Clients.OsConfigZonalServiceProtocol {
   /// @Snippet(path: "OsConfigZonalService_GetOSPolicyAssignmentReport")
   public func getOspolicyAssignmentReport(
     request: GetOSPolicyAssignmentReportRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudOsconfigV1.OSPolicyAssignmentReport {
+  ) async throws -> GoogleCloudOSConfigV1.OSPolicyAssignmentReport {
     try await self.inner.getOspolicyAssignmentReport(request: request, options: options)
   }
 
@@ -362,7 +362,7 @@ public class OsConfigZonalServiceClient: Clients.OsConfigZonalServiceProtocol {
   /// @Snippet(path: "OsConfigZonalService_ListOSPolicyAssignmentReports")
   public func listOspolicyAssignmentReports(
     request: ListOSPolicyAssignmentReportsRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudOsconfigV1.ListOSPolicyAssignmentReportsResponse {
+  ) async throws -> GoogleCloudOSConfigV1.ListOSPolicyAssignmentReportsResponse {
     try await self.inner.listOspolicyAssignmentReports(request: request, options: options)
   }
 
@@ -375,7 +375,7 @@ public class OsConfigZonalServiceClient: Clients.OsConfigZonalServiceProtocol {
   ) throws -> any AsyncSequence<OSPolicyAssignmentReport, Swift.Error> {
     let listRpc = {
       (token: Swift.String) async throws
-        -> GoogleCloudOsconfigV1.ListOSPolicyAssignmentReportsResponse in
+        -> GoogleCloudOSConfigV1.ListOSPolicyAssignmentReportsResponse in
       var request = byItem
       request.pageToken = token
       return try await self.listOspolicyAssignmentReports(request: request, options: options)
@@ -389,7 +389,7 @@ public class OsConfigZonalServiceClient: Clients.OsConfigZonalServiceProtocol {
   /// @Snippet(path: "OsConfigZonalService_GetInventory")
   public func getInventory(
     request: GetInventoryRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudOsconfigV1.Inventory {
+  ) async throws -> GoogleCloudOSConfigV1.Inventory {
     try await self.inner.getInventory(request: request, options: options)
   }
 
@@ -398,7 +398,7 @@ public class OsConfigZonalServiceClient: Clients.OsConfigZonalServiceProtocol {
   /// @Snippet(path: "OsConfigZonalService_ListInventories")
   public func listInventories(
     request: ListInventoriesRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudOsconfigV1.ListInventoriesResponse {
+  ) async throws -> GoogleCloudOSConfigV1.ListInventoriesResponse {
     try await self.inner.listInventories(request: request, options: options)
   }
 
@@ -409,7 +409,7 @@ public class OsConfigZonalServiceClient: Clients.OsConfigZonalServiceProtocol {
     byItem: ListInventoriesRequest, options: GoogleCloudGax.RequestOptions
   ) throws -> any AsyncSequence<Inventory, Swift.Error> {
     let listRpc = {
-      (token: Swift.String) async throws -> GoogleCloudOsconfigV1.ListInventoriesResponse in
+      (token: Swift.String) async throws -> GoogleCloudOSConfigV1.ListInventoriesResponse in
       var request = byItem
       request.pageToken = token
       return try await self.listInventories(request: request, options: options)
@@ -423,7 +423,7 @@ public class OsConfigZonalServiceClient: Clients.OsConfigZonalServiceProtocol {
   /// @Snippet(path: "OsConfigZonalService_GetVulnerabilityReport")
   public func getVulnerabilityReport(
     request: GetVulnerabilityReportRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudOsconfigV1.VulnerabilityReport {
+  ) async throws -> GoogleCloudOSConfigV1.VulnerabilityReport {
     try await self.inner.getVulnerabilityReport(request: request, options: options)
   }
 
@@ -432,7 +432,7 @@ public class OsConfigZonalServiceClient: Clients.OsConfigZonalServiceProtocol {
   /// @Snippet(path: "OsConfigZonalService_ListVulnerabilityReports")
   public func listVulnerabilityReports(
     request: ListVulnerabilityReportsRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudOsconfigV1.ListVulnerabilityReportsResponse {
+  ) async throws -> GoogleCloudOSConfigV1.ListVulnerabilityReportsResponse {
     try await self.inner.listVulnerabilityReports(request: request, options: options)
   }
 
@@ -443,7 +443,7 @@ public class OsConfigZonalServiceClient: Clients.OsConfigZonalServiceProtocol {
     byItem: ListVulnerabilityReportsRequest, options: GoogleCloudGax.RequestOptions
   ) throws -> any AsyncSequence<VulnerabilityReport, Swift.Error> {
     let listRpc = {
-      (token: Swift.String) async throws -> GoogleCloudOsconfigV1.ListVulnerabilityReportsResponse
+      (token: Swift.String) async throws -> GoogleCloudOSConfigV1.ListVulnerabilityReportsResponse
       in
       var request = byItem
       request.pageToken = token
@@ -513,16 +513,16 @@ extension Clients {
 
     /// See `OsConfigZonalServiceClient.getOspolicyAssignment`.
     func getOspolicyAssignment(request: GetOSPolicyAssignmentRequest) async throws
-      -> GoogleCloudOsconfigV1.OSPolicyAssignment
+      -> GoogleCloudOSConfigV1.OSPolicyAssignment
 
     /// See `OsConfigZonalServiceClient.getOspolicyAssignment`.
     func getOspolicyAssignment(
       name: Swift.String,
-    ) async throws -> GoogleCloudOsconfigV1.OSPolicyAssignment
+    ) async throws -> GoogleCloudOSConfigV1.OSPolicyAssignment
 
     /// See `OsConfigZonalServiceClient.listOspolicyAssignments`.
     func listOspolicyAssignments(request: ListOSPolicyAssignmentsRequest) async throws
-      -> GoogleCloudOsconfigV1.ListOSPolicyAssignmentsResponse
+      -> GoogleCloudOSConfigV1.ListOSPolicyAssignmentsResponse
 
     /// See `OsConfigZonalServiceClient.listOspolicyAssignments`.
     func listOspolicyAssignments(
@@ -536,7 +536,7 @@ extension Clients {
 
     /// See `OsConfigZonalServiceClient.listOspolicyAssignmentRevisions`.
     func listOspolicyAssignmentRevisions(request: ListOSPolicyAssignmentRevisionsRequest)
-      async throws -> GoogleCloudOsconfigV1.ListOSPolicyAssignmentRevisionsResponse
+      async throws -> GoogleCloudOSConfigV1.ListOSPolicyAssignmentRevisionsResponse
 
     /// See `OsConfigZonalServiceClient.listOspolicyAssignmentRevisions`.
     func listOspolicyAssignmentRevisions(
@@ -563,16 +563,16 @@ extension Clients {
 
     /// See `OsConfigZonalServiceClient.getOspolicyAssignmentReport`.
     func getOspolicyAssignmentReport(request: GetOSPolicyAssignmentReportRequest) async throws
-      -> GoogleCloudOsconfigV1.OSPolicyAssignmentReport
+      -> GoogleCloudOSConfigV1.OSPolicyAssignmentReport
 
     /// See `OsConfigZonalServiceClient.getOspolicyAssignmentReport`.
     func getOspolicyAssignmentReport(
       name: Swift.String,
-    ) async throws -> GoogleCloudOsconfigV1.OSPolicyAssignmentReport
+    ) async throws -> GoogleCloudOSConfigV1.OSPolicyAssignmentReport
 
     /// See `OsConfigZonalServiceClient.listOspolicyAssignmentReports`.
     func listOspolicyAssignmentReports(request: ListOSPolicyAssignmentReportsRequest) async throws
-      -> GoogleCloudOsconfigV1.ListOSPolicyAssignmentReportsResponse
+      -> GoogleCloudOSConfigV1.ListOSPolicyAssignmentReportsResponse
 
     /// See `OsConfigZonalServiceClient.listOspolicyAssignmentReports`.
     func listOspolicyAssignmentReports(
@@ -585,16 +585,16 @@ extension Clients {
     ) throws -> any AsyncSequence<OSPolicyAssignmentReport, Swift.Error>
 
     /// See `OsConfigZonalServiceClient.getInventory`.
-    func getInventory(request: GetInventoryRequest) async throws -> GoogleCloudOsconfigV1.Inventory
+    func getInventory(request: GetInventoryRequest) async throws -> GoogleCloudOSConfigV1.Inventory
 
     /// See `OsConfigZonalServiceClient.getInventory`.
     func getInventory(
       name: Swift.String,
-    ) async throws -> GoogleCloudOsconfigV1.Inventory
+    ) async throws -> GoogleCloudOSConfigV1.Inventory
 
     /// See `OsConfigZonalServiceClient.listInventories`.
     func listInventories(request: ListInventoriesRequest) async throws
-      -> GoogleCloudOsconfigV1.ListInventoriesResponse
+      -> GoogleCloudOSConfigV1.ListInventoriesResponse
 
     /// See `OsConfigZonalServiceClient.listInventories`.
     func listInventories(
@@ -608,16 +608,16 @@ extension Clients {
 
     /// See `OsConfigZonalServiceClient.getVulnerabilityReport`.
     func getVulnerabilityReport(request: GetVulnerabilityReportRequest) async throws
-      -> GoogleCloudOsconfigV1.VulnerabilityReport
+      -> GoogleCloudOSConfigV1.VulnerabilityReport
 
     /// See `OsConfigZonalServiceClient.getVulnerabilityReport`.
     func getVulnerabilityReport(
       name: Swift.String,
-    ) async throws -> GoogleCloudOsconfigV1.VulnerabilityReport
+    ) async throws -> GoogleCloudOSConfigV1.VulnerabilityReport
 
     /// See `OsConfigZonalServiceClient.listVulnerabilityReports`.
     func listVulnerabilityReports(request: ListVulnerabilityReportsRequest) async throws
-      -> GoogleCloudOsconfigV1.ListVulnerabilityReportsResponse
+      -> GoogleCloudOSConfigV1.ListVulnerabilityReportsResponse
 
     /// See `OsConfigZonalServiceClient.listVulnerabilityReports`.
     func listVulnerabilityReports(
@@ -660,12 +660,12 @@ extension Clients {
     /// See `OsConfigZonalServiceClient.getOspolicyAssignment`.
     func getOspolicyAssignment(
       request: GetOSPolicyAssignmentRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudOsconfigV1.OSPolicyAssignment
+    ) async throws -> GoogleCloudOSConfigV1.OSPolicyAssignment
 
     /// See `OsConfigZonalServiceClient.listOspolicyAssignments`.
     func listOspolicyAssignments(
       request: ListOSPolicyAssignmentsRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudOsconfigV1.ListOSPolicyAssignmentsResponse
+    ) async throws -> GoogleCloudOSConfigV1.ListOSPolicyAssignmentsResponse
 
     /// See `OsConfigZonalServiceClient.listOspolicyAssignments`.
     func listOspolicyAssignments(
@@ -675,7 +675,7 @@ extension Clients {
     /// See `OsConfigZonalServiceClient.listOspolicyAssignmentRevisions`.
     func listOspolicyAssignmentRevisions(
       request: ListOSPolicyAssignmentRevisionsRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudOsconfigV1.ListOSPolicyAssignmentRevisionsResponse
+    ) async throws -> GoogleCloudOSConfigV1.ListOSPolicyAssignmentRevisionsResponse
 
     /// See `OsConfigZonalServiceClient.listOspolicyAssignmentRevisions`.
     func listOspolicyAssignmentRevisions(
@@ -695,12 +695,12 @@ extension Clients {
     /// See `OsConfigZonalServiceClient.getOspolicyAssignmentReport`.
     func getOspolicyAssignmentReport(
       request: GetOSPolicyAssignmentReportRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudOsconfigV1.OSPolicyAssignmentReport
+    ) async throws -> GoogleCloudOSConfigV1.OSPolicyAssignmentReport
 
     /// See `OsConfigZonalServiceClient.listOspolicyAssignmentReports`.
     func listOspolicyAssignmentReports(
       request: ListOSPolicyAssignmentReportsRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudOsconfigV1.ListOSPolicyAssignmentReportsResponse
+    ) async throws -> GoogleCloudOSConfigV1.ListOSPolicyAssignmentReportsResponse
 
     /// See `OsConfigZonalServiceClient.listOspolicyAssignmentReports`.
     func listOspolicyAssignmentReports(
@@ -710,12 +710,12 @@ extension Clients {
     /// See `OsConfigZonalServiceClient.getInventory`.
     func getInventory(
       request: GetInventoryRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudOsconfigV1.Inventory
+    ) async throws -> GoogleCloudOSConfigV1.Inventory
 
     /// See `OsConfigZonalServiceClient.listInventories`.
     func listInventories(
       request: ListInventoriesRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudOsconfigV1.ListInventoriesResponse
+    ) async throws -> GoogleCloudOSConfigV1.ListInventoriesResponse
 
     /// See `OsConfigZonalServiceClient.listInventories`.
     func listInventories(
@@ -725,12 +725,12 @@ extension Clients {
     /// See `OsConfigZonalServiceClient.getVulnerabilityReport`.
     func getVulnerabilityReport(
       request: GetVulnerabilityReportRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudOsconfigV1.VulnerabilityReport
+    ) async throws -> GoogleCloudOSConfigV1.VulnerabilityReport
 
     /// See `OsConfigZonalServiceClient.listVulnerabilityReports`.
     func listVulnerabilityReports(
       request: ListVulnerabilityReportsRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudOsconfigV1.ListVulnerabilityReportsResponse
+    ) async throws -> GoogleCloudOSConfigV1.ListVulnerabilityReportsResponse
 
     /// See `OsConfigZonalServiceClient.listVulnerabilityReports`.
     func listVulnerabilityReports(
@@ -829,20 +829,20 @@ extension Clients.OsConfigZonalServiceProtocol {
   }
 
   public func getOspolicyAssignment(request: GetOSPolicyAssignmentRequest) async throws
-    -> GoogleCloudOsconfigV1.OSPolicyAssignment
+    -> GoogleCloudOSConfigV1.OSPolicyAssignment
   {
     try await self.getOspolicyAssignment(request: request, options: .init())
   }
 
   public func getOspolicyAssignment(
     request: GetOSPolicyAssignmentRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudOsconfigV1.OSPolicyAssignment {
+  ) async throws -> GoogleCloudOSConfigV1.OSPolicyAssignment {
     throw GoogleCloudGax.RequestError.unimplemented
   }
 
   public func getOspolicyAssignment(
     name: Swift.String,
-  ) async throws -> GoogleCloudOsconfigV1.OSPolicyAssignment {
+  ) async throws -> GoogleCloudOSConfigV1.OSPolicyAssignment {
     let request = GetOSPolicyAssignmentRequest().with {
       $0.name = name
     }
@@ -850,14 +850,14 @@ extension Clients.OsConfigZonalServiceProtocol {
   }
 
   public func listOspolicyAssignments(request: ListOSPolicyAssignmentsRequest) async throws
-    -> GoogleCloudOsconfigV1.ListOSPolicyAssignmentsResponse
+    -> GoogleCloudOSConfigV1.ListOSPolicyAssignmentsResponse
   {
     try await self.listOspolicyAssignments(request: request, options: .init())
   }
 
   public func listOspolicyAssignments(
     request: ListOSPolicyAssignmentsRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudOsconfigV1.ListOSPolicyAssignmentsResponse {
+  ) async throws -> GoogleCloudOSConfigV1.ListOSPolicyAssignmentsResponse {
     throw GoogleCloudGax.RequestError.unimplemented
   }
 
@@ -871,7 +871,7 @@ extension Clients.OsConfigZonalServiceProtocol {
     byItem: ListOSPolicyAssignmentsRequest, options: GoogleCloudGax.RequestOptions
   ) throws -> any AsyncSequence<OSPolicyAssignment, Swift.Error> {
     let listRpc = {
-      (token: Swift.String) async throws -> GoogleCloudOsconfigV1.ListOSPolicyAssignmentsResponse in
+      (token: Swift.String) async throws -> GoogleCloudOSConfigV1.ListOSPolicyAssignmentsResponse in
       throw GoogleCloudGax.RequestError.unimplemented
     }
     return GoogleCloudGax.PaginatedResponseSequence(listRpc: listRpc)
@@ -887,14 +887,14 @@ extension Clients.OsConfigZonalServiceProtocol {
   }
 
   public func listOspolicyAssignmentRevisions(request: ListOSPolicyAssignmentRevisionsRequest)
-    async throws -> GoogleCloudOsconfigV1.ListOSPolicyAssignmentRevisionsResponse
+    async throws -> GoogleCloudOSConfigV1.ListOSPolicyAssignmentRevisionsResponse
   {
     try await self.listOspolicyAssignmentRevisions(request: request, options: .init())
   }
 
   public func listOspolicyAssignmentRevisions(
     request: ListOSPolicyAssignmentRevisionsRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudOsconfigV1.ListOSPolicyAssignmentRevisionsResponse {
+  ) async throws -> GoogleCloudOSConfigV1.ListOSPolicyAssignmentRevisionsResponse {
     throw GoogleCloudGax.RequestError.unimplemented
   }
 
@@ -909,7 +909,7 @@ extension Clients.OsConfigZonalServiceProtocol {
   ) throws -> any AsyncSequence<OSPolicyAssignment, Swift.Error> {
     let listRpc = {
       (token: Swift.String) async throws
-        -> GoogleCloudOsconfigV1.ListOSPolicyAssignmentRevisionsResponse in
+        -> GoogleCloudOSConfigV1.ListOSPolicyAssignmentRevisionsResponse in
       throw GoogleCloudGax.RequestError.unimplemented
     }
     return GoogleCloudGax.PaginatedResponseSequence(listRpc: listRpc)
@@ -962,20 +962,20 @@ extension Clients.OsConfigZonalServiceProtocol {
   }
 
   public func getOspolicyAssignmentReport(request: GetOSPolicyAssignmentReportRequest) async throws
-    -> GoogleCloudOsconfigV1.OSPolicyAssignmentReport
+    -> GoogleCloudOSConfigV1.OSPolicyAssignmentReport
   {
     try await self.getOspolicyAssignmentReport(request: request, options: .init())
   }
 
   public func getOspolicyAssignmentReport(
     request: GetOSPolicyAssignmentReportRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudOsconfigV1.OSPolicyAssignmentReport {
+  ) async throws -> GoogleCloudOSConfigV1.OSPolicyAssignmentReport {
     throw GoogleCloudGax.RequestError.unimplemented
   }
 
   public func getOspolicyAssignmentReport(
     name: Swift.String,
-  ) async throws -> GoogleCloudOsconfigV1.OSPolicyAssignmentReport {
+  ) async throws -> GoogleCloudOSConfigV1.OSPolicyAssignmentReport {
     let request = GetOSPolicyAssignmentReportRequest().with {
       $0.name = name
     }
@@ -983,14 +983,14 @@ extension Clients.OsConfigZonalServiceProtocol {
   }
 
   public func listOspolicyAssignmentReports(request: ListOSPolicyAssignmentReportsRequest)
-    async throws -> GoogleCloudOsconfigV1.ListOSPolicyAssignmentReportsResponse
+    async throws -> GoogleCloudOSConfigV1.ListOSPolicyAssignmentReportsResponse
   {
     try await self.listOspolicyAssignmentReports(request: request, options: .init())
   }
 
   public func listOspolicyAssignmentReports(
     request: ListOSPolicyAssignmentReportsRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudOsconfigV1.ListOSPolicyAssignmentReportsResponse {
+  ) async throws -> GoogleCloudOSConfigV1.ListOSPolicyAssignmentReportsResponse {
     throw GoogleCloudGax.RequestError.unimplemented
   }
 
@@ -1005,7 +1005,7 @@ extension Clients.OsConfigZonalServiceProtocol {
   ) throws -> any AsyncSequence<OSPolicyAssignmentReport, Swift.Error> {
     let listRpc = {
       (token: Swift.String) async throws
-        -> GoogleCloudOsconfigV1.ListOSPolicyAssignmentReportsResponse in
+        -> GoogleCloudOSConfigV1.ListOSPolicyAssignmentReportsResponse in
       throw GoogleCloudGax.RequestError.unimplemented
     }
     return GoogleCloudGax.PaginatedResponseSequence(listRpc: listRpc)
@@ -1021,20 +1021,20 @@ extension Clients.OsConfigZonalServiceProtocol {
   }
 
   public func getInventory(request: GetInventoryRequest) async throws
-    -> GoogleCloudOsconfigV1.Inventory
+    -> GoogleCloudOSConfigV1.Inventory
   {
     try await self.getInventory(request: request, options: .init())
   }
 
   public func getInventory(
     request: GetInventoryRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudOsconfigV1.Inventory {
+  ) async throws -> GoogleCloudOSConfigV1.Inventory {
     throw GoogleCloudGax.RequestError.unimplemented
   }
 
   public func getInventory(
     name: Swift.String,
-  ) async throws -> GoogleCloudOsconfigV1.Inventory {
+  ) async throws -> GoogleCloudOSConfigV1.Inventory {
     let request = GetInventoryRequest().with {
       $0.name = name
     }
@@ -1042,14 +1042,14 @@ extension Clients.OsConfigZonalServiceProtocol {
   }
 
   public func listInventories(request: ListInventoriesRequest) async throws
-    -> GoogleCloudOsconfigV1.ListInventoriesResponse
+    -> GoogleCloudOSConfigV1.ListInventoriesResponse
   {
     try await self.listInventories(request: request, options: .init())
   }
 
   public func listInventories(
     request: ListInventoriesRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudOsconfigV1.ListInventoriesResponse {
+  ) async throws -> GoogleCloudOSConfigV1.ListInventoriesResponse {
     throw GoogleCloudGax.RequestError.unimplemented
   }
 
@@ -1063,7 +1063,7 @@ extension Clients.OsConfigZonalServiceProtocol {
     byItem: ListInventoriesRequest, options: GoogleCloudGax.RequestOptions
   ) throws -> any AsyncSequence<Inventory, Swift.Error> {
     let listRpc = {
-      (token: Swift.String) async throws -> GoogleCloudOsconfigV1.ListInventoriesResponse in
+      (token: Swift.String) async throws -> GoogleCloudOSConfigV1.ListInventoriesResponse in
       throw GoogleCloudGax.RequestError.unimplemented
     }
     return GoogleCloudGax.PaginatedResponseSequence(listRpc: listRpc)
@@ -1079,20 +1079,20 @@ extension Clients.OsConfigZonalServiceProtocol {
   }
 
   public func getVulnerabilityReport(request: GetVulnerabilityReportRequest) async throws
-    -> GoogleCloudOsconfigV1.VulnerabilityReport
+    -> GoogleCloudOSConfigV1.VulnerabilityReport
   {
     try await self.getVulnerabilityReport(request: request, options: .init())
   }
 
   public func getVulnerabilityReport(
     request: GetVulnerabilityReportRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudOsconfigV1.VulnerabilityReport {
+  ) async throws -> GoogleCloudOSConfigV1.VulnerabilityReport {
     throw GoogleCloudGax.RequestError.unimplemented
   }
 
   public func getVulnerabilityReport(
     name: Swift.String,
-  ) async throws -> GoogleCloudOsconfigV1.VulnerabilityReport {
+  ) async throws -> GoogleCloudOSConfigV1.VulnerabilityReport {
     let request = GetVulnerabilityReportRequest().with {
       $0.name = name
     }
@@ -1100,14 +1100,14 @@ extension Clients.OsConfigZonalServiceProtocol {
   }
 
   public func listVulnerabilityReports(request: ListVulnerabilityReportsRequest) async throws
-    -> GoogleCloudOsconfigV1.ListVulnerabilityReportsResponse
+    -> GoogleCloudOSConfigV1.ListVulnerabilityReportsResponse
   {
     try await self.listVulnerabilityReports(request: request, options: .init())
   }
 
   public func listVulnerabilityReports(
     request: ListVulnerabilityReportsRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudOsconfigV1.ListVulnerabilityReportsResponse {
+  ) async throws -> GoogleCloudOSConfigV1.ListVulnerabilityReportsResponse {
     throw GoogleCloudGax.RequestError.unimplemented
   }
 
@@ -1121,7 +1121,7 @@ extension Clients.OsConfigZonalServiceProtocol {
     byItem: ListVulnerabilityReportsRequest, options: GoogleCloudGax.RequestOptions
   ) throws -> any AsyncSequence<VulnerabilityReport, Swift.Error> {
     let listRpc = {
-      (token: Swift.String) async throws -> GoogleCloudOsconfigV1.ListVulnerabilityReportsResponse
+      (token: Swift.String) async throws -> GoogleCloudOSConfigV1.ListVulnerabilityReportsResponse
       in
       throw GoogleCloudGax.RequestError.unimplemented
     }

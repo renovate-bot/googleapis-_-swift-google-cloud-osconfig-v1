@@ -22,32 +22,40 @@ import GoogleCloudWkt
 import GoogleLongrunning
 import GoogleRpc
 import GoogleCloudGax
+import struct Logging.Logger
 
 extension Clients {
-  final class OsConfigZonalServiceRetry: OsConfigZonalServiceStub {
+  final class OsConfigZonalServiceLogging: OsConfigZonalServiceStub {
     let inner: any OsConfigZonalServiceStub
-    let options: GoogleCloudGax.ClientOptions
+    let logger: Logger
 
-    public init(_ inner: any OsConfigZonalServiceStub, options: GoogleCloudGax.ClientOptions) {
+    public init(_ inner: any OsConfigZonalServiceStub, logger: Logger) {
+      var logger = logger
+      logger[metadataKey: "gcp.artifact.id"] = "google-cloud-osconfig-v1"
+      logger[metadataKey: "gcp.client.service"] = "osconfig"
+      logger[metadataKey: "gcp.experimental.swift.client"] = "OsConfigZonalService"
       self.inner = inner
-      self.options = options
+      self.logger = logger
     }
 
     func _intercept<Input, Output>(
       request: Input,
       options: GoogleCloudGax.RequestOptions,
-      idempotent: Swift.Bool,
+      name: Swift.String,
       action: (Input, GoogleCloudGax.RequestOptions) async throws -> Output,
     ) async throws -> Output {
-      let loop = GoogleCloudGax._RetryLoop(
-        options: options, withDefault: self.options, idempotent: idempotent,
-      )
-      let attempt = { (attemptTimeout: Swift.Duration?) async throws -> Output in
-        var attemptOptions = options
-        attemptOptions.attemptTimeout = attemptTimeout
-        return try await action(request, attemptOptions)
+      var logger = logger
+      logger[metadataKey: "gcp.experimental.swift.request.id"] = "\(UUID())"
+      logger[metadataKey: "gcp.experimental.swift.method"] = .string(name)
+      logger.debug("enter  : \(request) \(options)")
+      do {
+        let output = try await action(request, options)
+        logger.debug("success: \(request) \(options) \(output)")
+        return output
+      } catch let error {
+        logger.debug("error  : \(request) \(options) \(error)")
+        throw error
       }
-      return try await loop.run(attempt: attempt)
     }
 
     public func createOspolicyAssignment(
@@ -56,7 +64,7 @@ extension Clients {
       try await self._intercept(
         request: request,
         options: options,
-        idempotent: false,
+        name: "createOspolicyAssignment",
         action: {
           (r: CreateOSPolicyAssignmentRequest, o: GoogleCloudGax.RequestOptions) async throws
             -> GoogleLongrunning.Operation
@@ -71,7 +79,7 @@ extension Clients {
       try await self._intercept(
         request: request,
         options: options,
-        idempotent: false,
+        name: "updateOspolicyAssignment",
         action: {
           (r: UpdateOSPolicyAssignmentRequest, o: GoogleCloudGax.RequestOptions) async throws
             -> GoogleLongrunning.Operation
@@ -82,14 +90,14 @@ extension Clients {
 
     public func getOspolicyAssignment(
       request: GetOSPolicyAssignmentRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudOsconfigV1.OSPolicyAssignment {
+    ) async throws -> GoogleCloudOSConfigV1.OSPolicyAssignment {
       try await self._intercept(
         request: request,
         options: options,
-        idempotent: true,
+        name: "getOspolicyAssignment",
         action: {
           (r: GetOSPolicyAssignmentRequest, o: GoogleCloudGax.RequestOptions) async throws
-            -> GoogleCloudOsconfigV1.OSPolicyAssignment
+            -> GoogleCloudOSConfigV1.OSPolicyAssignment
           in
           return try await self.inner.getOspolicyAssignment(request: r, options: o)
         })
@@ -97,14 +105,14 @@ extension Clients {
 
     public func listOspolicyAssignments(
       request: ListOSPolicyAssignmentsRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudOsconfigV1.ListOSPolicyAssignmentsResponse {
+    ) async throws -> GoogleCloudOSConfigV1.ListOSPolicyAssignmentsResponse {
       try await self._intercept(
         request: request,
         options: options,
-        idempotent: true,
+        name: "listOspolicyAssignments",
         action: {
           (r: ListOSPolicyAssignmentsRequest, o: GoogleCloudGax.RequestOptions) async throws
-            -> GoogleCloudOsconfigV1.ListOSPolicyAssignmentsResponse
+            -> GoogleCloudOSConfigV1.ListOSPolicyAssignmentsResponse
           in
           return try await self.inner.listOspolicyAssignments(request: r, options: o)
         })
@@ -112,14 +120,14 @@ extension Clients {
 
     public func listOspolicyAssignmentRevisions(
       request: ListOSPolicyAssignmentRevisionsRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudOsconfigV1.ListOSPolicyAssignmentRevisionsResponse {
+    ) async throws -> GoogleCloudOSConfigV1.ListOSPolicyAssignmentRevisionsResponse {
       try await self._intercept(
         request: request,
         options: options,
-        idempotent: true,
+        name: "listOspolicyAssignmentRevisions",
         action: {
           (r: ListOSPolicyAssignmentRevisionsRequest, o: GoogleCloudGax.RequestOptions) async throws
-            -> GoogleCloudOsconfigV1.ListOSPolicyAssignmentRevisionsResponse
+            -> GoogleCloudOSConfigV1.ListOSPolicyAssignmentRevisionsResponse
           in
           return try await self.inner.listOspolicyAssignmentRevisions(request: r, options: o)
         })
@@ -131,7 +139,7 @@ extension Clients {
       try await self._intercept(
         request: request,
         options: options,
-        idempotent: false,
+        name: "deleteOspolicyAssignment",
         action: {
           (r: DeleteOSPolicyAssignmentRequest, o: GoogleCloudGax.RequestOptions) async throws
             -> GoogleLongrunning.Operation
@@ -142,14 +150,14 @@ extension Clients {
 
     public func getOspolicyAssignmentReport(
       request: GetOSPolicyAssignmentReportRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudOsconfigV1.OSPolicyAssignmentReport {
+    ) async throws -> GoogleCloudOSConfigV1.OSPolicyAssignmentReport {
       try await self._intercept(
         request: request,
         options: options,
-        idempotent: true,
+        name: "getOspolicyAssignmentReport",
         action: {
           (r: GetOSPolicyAssignmentReportRequest, o: GoogleCloudGax.RequestOptions) async throws
-            -> GoogleCloudOsconfigV1.OSPolicyAssignmentReport
+            -> GoogleCloudOSConfigV1.OSPolicyAssignmentReport
           in
           return try await self.inner.getOspolicyAssignmentReport(request: r, options: o)
         })
@@ -157,14 +165,14 @@ extension Clients {
 
     public func listOspolicyAssignmentReports(
       request: ListOSPolicyAssignmentReportsRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudOsconfigV1.ListOSPolicyAssignmentReportsResponse {
+    ) async throws -> GoogleCloudOSConfigV1.ListOSPolicyAssignmentReportsResponse {
       try await self._intercept(
         request: request,
         options: options,
-        idempotent: true,
+        name: "listOspolicyAssignmentReports",
         action: {
           (r: ListOSPolicyAssignmentReportsRequest, o: GoogleCloudGax.RequestOptions) async throws
-            -> GoogleCloudOsconfigV1.ListOSPolicyAssignmentReportsResponse
+            -> GoogleCloudOSConfigV1.ListOSPolicyAssignmentReportsResponse
           in
           return try await self.inner.listOspolicyAssignmentReports(request: r, options: o)
         })
@@ -172,14 +180,14 @@ extension Clients {
 
     public func getInventory(
       request: GetInventoryRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudOsconfigV1.Inventory {
+    ) async throws -> GoogleCloudOSConfigV1.Inventory {
       try await self._intercept(
         request: request,
         options: options,
-        idempotent: true,
+        name: "getInventory",
         action: {
           (r: GetInventoryRequest, o: GoogleCloudGax.RequestOptions) async throws
-            -> GoogleCloudOsconfigV1.Inventory
+            -> GoogleCloudOSConfigV1.Inventory
           in
           return try await self.inner.getInventory(request: r, options: o)
         })
@@ -187,14 +195,14 @@ extension Clients {
 
     public func listInventories(
       request: ListInventoriesRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudOsconfigV1.ListInventoriesResponse {
+    ) async throws -> GoogleCloudOSConfigV1.ListInventoriesResponse {
       try await self._intercept(
         request: request,
         options: options,
-        idempotent: true,
+        name: "listInventories",
         action: {
           (r: ListInventoriesRequest, o: GoogleCloudGax.RequestOptions) async throws
-            -> GoogleCloudOsconfigV1.ListInventoriesResponse
+            -> GoogleCloudOSConfigV1.ListInventoriesResponse
           in
           return try await self.inner.listInventories(request: r, options: o)
         })
@@ -202,14 +210,14 @@ extension Clients {
 
     public func getVulnerabilityReport(
       request: GetVulnerabilityReportRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudOsconfigV1.VulnerabilityReport {
+    ) async throws -> GoogleCloudOSConfigV1.VulnerabilityReport {
       try await self._intercept(
         request: request,
         options: options,
-        idempotent: true,
+        name: "getVulnerabilityReport",
         action: {
           (r: GetVulnerabilityReportRequest, o: GoogleCloudGax.RequestOptions) async throws
-            -> GoogleCloudOsconfigV1.VulnerabilityReport
+            -> GoogleCloudOSConfigV1.VulnerabilityReport
           in
           return try await self.inner.getVulnerabilityReport(request: r, options: o)
         })
@@ -217,14 +225,14 @@ extension Clients {
 
     public func listVulnerabilityReports(
       request: ListVulnerabilityReportsRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudOsconfigV1.ListVulnerabilityReportsResponse {
+    ) async throws -> GoogleCloudOSConfigV1.ListVulnerabilityReportsResponse {
       try await self._intercept(
         request: request,
         options: options,
-        idempotent: true,
+        name: "listVulnerabilityReports",
         action: {
           (r: ListVulnerabilityReportsRequest, o: GoogleCloudGax.RequestOptions) async throws
-            -> GoogleCloudOsconfigV1.ListVulnerabilityReportsResponse
+            -> GoogleCloudOSConfigV1.ListVulnerabilityReportsResponse
           in
           return try await self.inner.listVulnerabilityReports(request: r, options: o)
         })
@@ -236,7 +244,7 @@ extension Clients {
       try await self._intercept(
         request: request,
         options: options,
-        idempotent: true,
+        name: "getOperation",
         action: {
           (r: GoogleLongrunning.GetOperationRequest, o: GoogleCloudGax.RequestOptions) async throws
             -> GoogleLongrunning.Operation
@@ -251,7 +259,7 @@ extension Clients {
       try await self._intercept(
         request: request,
         options: options,
-        idempotent: false,
+        name: "cancelOperation",
         action: {
           (r: GoogleLongrunning.CancelOperationRequest, o: GoogleCloudGax.RequestOptions)
             async throws -> Void in

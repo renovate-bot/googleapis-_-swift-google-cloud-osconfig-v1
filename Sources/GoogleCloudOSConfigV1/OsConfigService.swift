@@ -46,7 +46,7 @@ public class OsConfigServiceClient: Clients.OsConfigServiceProtocol {
   /// @Snippet(path: "OsConfigService_ExecutePatchJob")
   public func executePatchJob(
     request: ExecutePatchJobRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudOsconfigV1.PatchJob {
+  ) async throws -> GoogleCloudOSConfigV1.PatchJob {
     try await self.inner.executePatchJob(request: request, options: options)
   }
 
@@ -56,7 +56,7 @@ public class OsConfigServiceClient: Clients.OsConfigServiceProtocol {
   /// @Snippet(path: "OsConfigService_GetPatchJob")
   public func getPatchJob(
     request: GetPatchJobRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudOsconfigV1.PatchJob {
+  ) async throws -> GoogleCloudOSConfigV1.PatchJob {
     try await self.inner.getPatchJob(request: request, options: options)
   }
 
@@ -66,7 +66,7 @@ public class OsConfigServiceClient: Clients.OsConfigServiceProtocol {
   /// @Snippet(path: "OsConfigService_CancelPatchJob")
   public func cancelPatchJob(
     request: CancelPatchJobRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudOsconfigV1.PatchJob {
+  ) async throws -> GoogleCloudOSConfigV1.PatchJob {
     try await self.inner.cancelPatchJob(request: request, options: options)
   }
 
@@ -75,7 +75,7 @@ public class OsConfigServiceClient: Clients.OsConfigServiceProtocol {
   /// @Snippet(path: "OsConfigService_ListPatchJobs")
   public func listPatchJobs(
     request: ListPatchJobsRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudOsconfigV1.ListPatchJobsResponse {
+  ) async throws -> GoogleCloudOSConfigV1.ListPatchJobsResponse {
     try await self.inner.listPatchJobs(request: request, options: options)
   }
 
@@ -86,7 +86,7 @@ public class OsConfigServiceClient: Clients.OsConfigServiceProtocol {
     byItem: ListPatchJobsRequest, options: GoogleCloudGax.RequestOptions
   ) throws -> any AsyncSequence<PatchJob, Swift.Error> {
     let listRpc = {
-      (token: Swift.String) async throws -> GoogleCloudOsconfigV1.ListPatchJobsResponse in
+      (token: Swift.String) async throws -> GoogleCloudOSConfigV1.ListPatchJobsResponse in
       var request = byItem
       request.pageToken = token
       return try await self.listPatchJobs(request: request, options: options)
@@ -99,7 +99,7 @@ public class OsConfigServiceClient: Clients.OsConfigServiceProtocol {
   /// @Snippet(path: "OsConfigService_ListPatchJobInstanceDetails")
   public func listPatchJobInstanceDetails(
     request: ListPatchJobInstanceDetailsRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudOsconfigV1.ListPatchJobInstanceDetailsResponse {
+  ) async throws -> GoogleCloudOSConfigV1.ListPatchJobInstanceDetailsResponse {
     try await self.inner.listPatchJobInstanceDetails(request: request, options: options)
   }
 
@@ -111,7 +111,7 @@ public class OsConfigServiceClient: Clients.OsConfigServiceProtocol {
   ) throws -> any AsyncSequence<PatchJobInstanceDetails, Swift.Error> {
     let listRpc = {
       (token: Swift.String) async throws
-        -> GoogleCloudOsconfigV1.ListPatchJobInstanceDetailsResponse in
+        -> GoogleCloudOSConfigV1.ListPatchJobInstanceDetailsResponse in
       var request = byItem
       request.pageToken = token
       return try await self.listPatchJobInstanceDetails(request: request, options: options)
@@ -124,7 +124,7 @@ public class OsConfigServiceClient: Clients.OsConfigServiceProtocol {
   /// @Snippet(path: "OsConfigService_CreatePatchDeployment")
   public func createPatchDeployment(
     request: CreatePatchDeploymentRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudOsconfigV1.PatchDeployment {
+  ) async throws -> GoogleCloudOSConfigV1.PatchDeployment {
     try await self.inner.createPatchDeployment(request: request, options: options)
   }
 
@@ -133,7 +133,7 @@ public class OsConfigServiceClient: Clients.OsConfigServiceProtocol {
   /// @Snippet(path: "OsConfigService_GetPatchDeployment")
   public func getPatchDeployment(
     request: GetPatchDeploymentRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudOsconfigV1.PatchDeployment {
+  ) async throws -> GoogleCloudOSConfigV1.PatchDeployment {
     try await self.inner.getPatchDeployment(request: request, options: options)
   }
 
@@ -142,7 +142,7 @@ public class OsConfigServiceClient: Clients.OsConfigServiceProtocol {
   /// @Snippet(path: "OsConfigService_ListPatchDeployments")
   public func listPatchDeployments(
     request: ListPatchDeploymentsRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudOsconfigV1.ListPatchDeploymentsResponse {
+  ) async throws -> GoogleCloudOSConfigV1.ListPatchDeploymentsResponse {
     try await self.inner.listPatchDeployments(request: request, options: options)
   }
 
@@ -153,7 +153,7 @@ public class OsConfigServiceClient: Clients.OsConfigServiceProtocol {
     byItem: ListPatchDeploymentsRequest, options: GoogleCloudGax.RequestOptions
   ) throws -> any AsyncSequence<PatchDeployment, Swift.Error> {
     let listRpc = {
-      (token: Swift.String) async throws -> GoogleCloudOsconfigV1.ListPatchDeploymentsResponse in
+      (token: Swift.String) async throws -> GoogleCloudOSConfigV1.ListPatchDeploymentsResponse in
       var request = byItem
       request.pageToken = token
       return try await self.listPatchDeployments(request: request, options: options)
@@ -175,7 +175,7 @@ public class OsConfigServiceClient: Clients.OsConfigServiceProtocol {
   /// @Snippet(path: "OsConfigService_UpdatePatchDeployment")
   public func updatePatchDeployment(
     request: UpdatePatchDeploymentRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudOsconfigV1.PatchDeployment {
+  ) async throws -> GoogleCloudOSConfigV1.PatchDeployment {
     try await self.inner.updatePatchDeployment(request: request, options: options)
   }
 
@@ -185,7 +185,7 @@ public class OsConfigServiceClient: Clients.OsConfigServiceProtocol {
   /// @Snippet(path: "OsConfigService_PausePatchDeployment")
   public func pausePatchDeployment(
     request: PausePatchDeploymentRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudOsconfigV1.PatchDeployment {
+  ) async throws -> GoogleCloudOSConfigV1.PatchDeployment {
     try await self.inner.pausePatchDeployment(request: request, options: options)
   }
 
@@ -195,7 +195,7 @@ public class OsConfigServiceClient: Clients.OsConfigServiceProtocol {
   /// @Snippet(path: "OsConfigService_ResumePatchDeployment")
   public func resumePatchDeployment(
     request: ResumePatchDeploymentRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudOsconfigV1.PatchDeployment {
+  ) async throws -> GoogleCloudOSConfigV1.PatchDeployment {
     try await self.inner.resumePatchDeployment(request: request, options: options)
   }
 
@@ -231,23 +231,23 @@ extension Clients {
   public protocol OsConfigServiceProtocol {
     /// See `OsConfigServiceClient.executePatchJob`.
     func executePatchJob(request: ExecutePatchJobRequest) async throws
-      -> GoogleCloudOsconfigV1.PatchJob
+      -> GoogleCloudOSConfigV1.PatchJob
 
     /// See `OsConfigServiceClient.getPatchJob`.
-    func getPatchJob(request: GetPatchJobRequest) async throws -> GoogleCloudOsconfigV1.PatchJob
+    func getPatchJob(request: GetPatchJobRequest) async throws -> GoogleCloudOSConfigV1.PatchJob
 
     /// See `OsConfigServiceClient.getPatchJob`.
     func getPatchJob(
       name: Swift.String,
-    ) async throws -> GoogleCloudOsconfigV1.PatchJob
+    ) async throws -> GoogleCloudOSConfigV1.PatchJob
 
     /// See `OsConfigServiceClient.cancelPatchJob`.
     func cancelPatchJob(request: CancelPatchJobRequest) async throws
-      -> GoogleCloudOsconfigV1.PatchJob
+      -> GoogleCloudOSConfigV1.PatchJob
 
     /// See `OsConfigServiceClient.listPatchJobs`.
     func listPatchJobs(request: ListPatchJobsRequest) async throws
-      -> GoogleCloudOsconfigV1.ListPatchJobsResponse
+      -> GoogleCloudOSConfigV1.ListPatchJobsResponse
 
     /// See `OsConfigServiceClient.listPatchJobs`.
     func listPatchJobs(
@@ -261,7 +261,7 @@ extension Clients {
 
     /// See `OsConfigServiceClient.listPatchJobInstanceDetails`.
     func listPatchJobInstanceDetails(request: ListPatchJobInstanceDetailsRequest) async throws
-      -> GoogleCloudOsconfigV1.ListPatchJobInstanceDetailsResponse
+      -> GoogleCloudOSConfigV1.ListPatchJobInstanceDetailsResponse
 
     /// See `OsConfigServiceClient.listPatchJobInstanceDetails`.
     func listPatchJobInstanceDetails(
@@ -275,27 +275,27 @@ extension Clients {
 
     /// See `OsConfigServiceClient.createPatchDeployment`.
     func createPatchDeployment(request: CreatePatchDeploymentRequest) async throws
-      -> GoogleCloudOsconfigV1.PatchDeployment
+      -> GoogleCloudOSConfigV1.PatchDeployment
 
     /// See `OsConfigServiceClient.createPatchDeployment`.
     func createPatchDeployment(
       parent: Swift.String,
       patchDeployment: PatchDeployment?,
       patchDeploymentId: Swift.String,
-    ) async throws -> GoogleCloudOsconfigV1.PatchDeployment
+    ) async throws -> GoogleCloudOSConfigV1.PatchDeployment
 
     /// See `OsConfigServiceClient.getPatchDeployment`.
     func getPatchDeployment(request: GetPatchDeploymentRequest) async throws
-      -> GoogleCloudOsconfigV1.PatchDeployment
+      -> GoogleCloudOSConfigV1.PatchDeployment
 
     /// See `OsConfigServiceClient.getPatchDeployment`.
     func getPatchDeployment(
       name: Swift.String,
-    ) async throws -> GoogleCloudOsconfigV1.PatchDeployment
+    ) async throws -> GoogleCloudOSConfigV1.PatchDeployment
 
     /// See `OsConfigServiceClient.listPatchDeployments`.
     func listPatchDeployments(request: ListPatchDeploymentsRequest) async throws
-      -> GoogleCloudOsconfigV1.ListPatchDeploymentsResponse
+      -> GoogleCloudOSConfigV1.ListPatchDeploymentsResponse
 
     /// See `OsConfigServiceClient.listPatchDeployments`.
     func listPatchDeployments(
@@ -317,31 +317,31 @@ extension Clients {
 
     /// See `OsConfigServiceClient.updatePatchDeployment`.
     func updatePatchDeployment(request: UpdatePatchDeploymentRequest) async throws
-      -> GoogleCloudOsconfigV1.PatchDeployment
+      -> GoogleCloudOSConfigV1.PatchDeployment
 
     /// See `OsConfigServiceClient.updatePatchDeployment`.
     func updatePatchDeployment(
       patchDeployment: PatchDeployment?,
       updateMask: GoogleCloudWkt.FieldMask?,
-    ) async throws -> GoogleCloudOsconfigV1.PatchDeployment
+    ) async throws -> GoogleCloudOSConfigV1.PatchDeployment
 
     /// See `OsConfigServiceClient.pausePatchDeployment`.
     func pausePatchDeployment(request: PausePatchDeploymentRequest) async throws
-      -> GoogleCloudOsconfigV1.PatchDeployment
+      -> GoogleCloudOSConfigV1.PatchDeployment
 
     /// See `OsConfigServiceClient.pausePatchDeployment`.
     func pausePatchDeployment(
       name: Swift.String,
-    ) async throws -> GoogleCloudOsconfigV1.PatchDeployment
+    ) async throws -> GoogleCloudOSConfigV1.PatchDeployment
 
     /// See `OsConfigServiceClient.resumePatchDeployment`.
     func resumePatchDeployment(request: ResumePatchDeploymentRequest) async throws
-      -> GoogleCloudOsconfigV1.PatchDeployment
+      -> GoogleCloudOSConfigV1.PatchDeployment
 
     /// See `OsConfigServiceClient.resumePatchDeployment`.
     func resumePatchDeployment(
       name: Swift.String,
-    ) async throws -> GoogleCloudOsconfigV1.PatchDeployment
+    ) async throws -> GoogleCloudOSConfigV1.PatchDeployment
 
     /// See `OsConfigServiceClient.cancelOperation`.
     func cancelOperation(request: GoogleLongrunning.CancelOperationRequest) async throws
@@ -354,22 +354,22 @@ extension Clients {
     /// See `OsConfigServiceClient.executePatchJob`.
     func executePatchJob(
       request: ExecutePatchJobRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudOsconfigV1.PatchJob
+    ) async throws -> GoogleCloudOSConfigV1.PatchJob
 
     /// See `OsConfigServiceClient.getPatchJob`.
     func getPatchJob(
       request: GetPatchJobRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudOsconfigV1.PatchJob
+    ) async throws -> GoogleCloudOSConfigV1.PatchJob
 
     /// See `OsConfigServiceClient.cancelPatchJob`.
     func cancelPatchJob(
       request: CancelPatchJobRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudOsconfigV1.PatchJob
+    ) async throws -> GoogleCloudOSConfigV1.PatchJob
 
     /// See `OsConfigServiceClient.listPatchJobs`.
     func listPatchJobs(
       request: ListPatchJobsRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudOsconfigV1.ListPatchJobsResponse
+    ) async throws -> GoogleCloudOSConfigV1.ListPatchJobsResponse
 
     /// See `OsConfigServiceClient.listPatchJobs`.
     func listPatchJobs(
@@ -379,7 +379,7 @@ extension Clients {
     /// See `OsConfigServiceClient.listPatchJobInstanceDetails`.
     func listPatchJobInstanceDetails(
       request: ListPatchJobInstanceDetailsRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudOsconfigV1.ListPatchJobInstanceDetailsResponse
+    ) async throws -> GoogleCloudOSConfigV1.ListPatchJobInstanceDetailsResponse
 
     /// See `OsConfigServiceClient.listPatchJobInstanceDetails`.
     func listPatchJobInstanceDetails(
@@ -389,17 +389,17 @@ extension Clients {
     /// See `OsConfigServiceClient.createPatchDeployment`.
     func createPatchDeployment(
       request: CreatePatchDeploymentRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudOsconfigV1.PatchDeployment
+    ) async throws -> GoogleCloudOSConfigV1.PatchDeployment
 
     /// See `OsConfigServiceClient.getPatchDeployment`.
     func getPatchDeployment(
       request: GetPatchDeploymentRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudOsconfigV1.PatchDeployment
+    ) async throws -> GoogleCloudOSConfigV1.PatchDeployment
 
     /// See `OsConfigServiceClient.listPatchDeployments`.
     func listPatchDeployments(
       request: ListPatchDeploymentsRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudOsconfigV1.ListPatchDeploymentsResponse
+    ) async throws -> GoogleCloudOSConfigV1.ListPatchDeploymentsResponse
 
     /// See `OsConfigServiceClient.listPatchDeployments`.
     func listPatchDeployments(
@@ -414,17 +414,17 @@ extension Clients {
     /// See `OsConfigServiceClient.updatePatchDeployment`.
     func updatePatchDeployment(
       request: UpdatePatchDeploymentRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudOsconfigV1.PatchDeployment
+    ) async throws -> GoogleCloudOSConfigV1.PatchDeployment
 
     /// See `OsConfigServiceClient.pausePatchDeployment`.
     func pausePatchDeployment(
       request: PausePatchDeploymentRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudOsconfigV1.PatchDeployment
+    ) async throws -> GoogleCloudOSConfigV1.PatchDeployment
 
     /// See `OsConfigServiceClient.resumePatchDeployment`.
     func resumePatchDeployment(
       request: ResumePatchDeploymentRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudOsconfigV1.PatchDeployment
+    ) async throws -> GoogleCloudOSConfigV1.PatchDeployment
 
     /// See `OsConfigServiceClient.cancelOperation`.
     func cancelOperation(
@@ -436,32 +436,32 @@ extension Clients {
 // Default implementations
 extension Clients.OsConfigServiceProtocol {
   public func executePatchJob(request: ExecutePatchJobRequest) async throws
-    -> GoogleCloudOsconfigV1.PatchJob
+    -> GoogleCloudOSConfigV1.PatchJob
   {
     try await self.executePatchJob(request: request, options: .init())
   }
 
   public func executePatchJob(
     request: ExecutePatchJobRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudOsconfigV1.PatchJob {
+  ) async throws -> GoogleCloudOSConfigV1.PatchJob {
     throw GoogleCloudGax.RequestError.unimplemented
   }
 
   public func getPatchJob(request: GetPatchJobRequest) async throws
-    -> GoogleCloudOsconfigV1.PatchJob
+    -> GoogleCloudOSConfigV1.PatchJob
   {
     try await self.getPatchJob(request: request, options: .init())
   }
 
   public func getPatchJob(
     request: GetPatchJobRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudOsconfigV1.PatchJob {
+  ) async throws -> GoogleCloudOSConfigV1.PatchJob {
     throw GoogleCloudGax.RequestError.unimplemented
   }
 
   public func getPatchJob(
     name: Swift.String,
-  ) async throws -> GoogleCloudOsconfigV1.PatchJob {
+  ) async throws -> GoogleCloudOSConfigV1.PatchJob {
     let request = GetPatchJobRequest().with {
       $0.name = name
     }
@@ -469,26 +469,26 @@ extension Clients.OsConfigServiceProtocol {
   }
 
   public func cancelPatchJob(request: CancelPatchJobRequest) async throws
-    -> GoogleCloudOsconfigV1.PatchJob
+    -> GoogleCloudOSConfigV1.PatchJob
   {
     try await self.cancelPatchJob(request: request, options: .init())
   }
 
   public func cancelPatchJob(
     request: CancelPatchJobRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudOsconfigV1.PatchJob {
+  ) async throws -> GoogleCloudOSConfigV1.PatchJob {
     throw GoogleCloudGax.RequestError.unimplemented
   }
 
   public func listPatchJobs(request: ListPatchJobsRequest) async throws
-    -> GoogleCloudOsconfigV1.ListPatchJobsResponse
+    -> GoogleCloudOSConfigV1.ListPatchJobsResponse
   {
     try await self.listPatchJobs(request: request, options: .init())
   }
 
   public func listPatchJobs(
     request: ListPatchJobsRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudOsconfigV1.ListPatchJobsResponse {
+  ) async throws -> GoogleCloudOSConfigV1.ListPatchJobsResponse {
     throw GoogleCloudGax.RequestError.unimplemented
   }
 
@@ -502,7 +502,7 @@ extension Clients.OsConfigServiceProtocol {
     byItem: ListPatchJobsRequest, options: GoogleCloudGax.RequestOptions
   ) throws -> any AsyncSequence<PatchJob, Swift.Error> {
     let listRpc = {
-      (token: Swift.String) async throws -> GoogleCloudOsconfigV1.ListPatchJobsResponse in
+      (token: Swift.String) async throws -> GoogleCloudOSConfigV1.ListPatchJobsResponse in
       throw GoogleCloudGax.RequestError.unimplemented
     }
     return GoogleCloudGax.PaginatedResponseSequence(listRpc: listRpc)
@@ -518,14 +518,14 @@ extension Clients.OsConfigServiceProtocol {
   }
 
   public func listPatchJobInstanceDetails(request: ListPatchJobInstanceDetailsRequest) async throws
-    -> GoogleCloudOsconfigV1.ListPatchJobInstanceDetailsResponse
+    -> GoogleCloudOSConfigV1.ListPatchJobInstanceDetailsResponse
   {
     try await self.listPatchJobInstanceDetails(request: request, options: .init())
   }
 
   public func listPatchJobInstanceDetails(
     request: ListPatchJobInstanceDetailsRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudOsconfigV1.ListPatchJobInstanceDetailsResponse {
+  ) async throws -> GoogleCloudOSConfigV1.ListPatchJobInstanceDetailsResponse {
     throw GoogleCloudGax.RequestError.unimplemented
   }
 
@@ -540,7 +540,7 @@ extension Clients.OsConfigServiceProtocol {
   ) throws -> any AsyncSequence<PatchJobInstanceDetails, Swift.Error> {
     let listRpc = {
       (token: Swift.String) async throws
-        -> GoogleCloudOsconfigV1.ListPatchJobInstanceDetailsResponse in
+        -> GoogleCloudOSConfigV1.ListPatchJobInstanceDetailsResponse in
       throw GoogleCloudGax.RequestError.unimplemented
     }
     return GoogleCloudGax.PaginatedResponseSequence(listRpc: listRpc)
@@ -556,14 +556,14 @@ extension Clients.OsConfigServiceProtocol {
   }
 
   public func createPatchDeployment(request: CreatePatchDeploymentRequest) async throws
-    -> GoogleCloudOsconfigV1.PatchDeployment
+    -> GoogleCloudOSConfigV1.PatchDeployment
   {
     try await self.createPatchDeployment(request: request, options: .init())
   }
 
   public func createPatchDeployment(
     request: CreatePatchDeploymentRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudOsconfigV1.PatchDeployment {
+  ) async throws -> GoogleCloudOSConfigV1.PatchDeployment {
     throw GoogleCloudGax.RequestError.unimplemented
   }
 
@@ -571,7 +571,7 @@ extension Clients.OsConfigServiceProtocol {
     parent: Swift.String,
     patchDeployment: PatchDeployment?,
     patchDeploymentId: Swift.String,
-  ) async throws -> GoogleCloudOsconfigV1.PatchDeployment {
+  ) async throws -> GoogleCloudOSConfigV1.PatchDeployment {
     let request = CreatePatchDeploymentRequest().with {
       $0.parent = parent
       $0.patchDeployment = patchDeployment
@@ -581,20 +581,20 @@ extension Clients.OsConfigServiceProtocol {
   }
 
   public func getPatchDeployment(request: GetPatchDeploymentRequest) async throws
-    -> GoogleCloudOsconfigV1.PatchDeployment
+    -> GoogleCloudOSConfigV1.PatchDeployment
   {
     try await self.getPatchDeployment(request: request, options: .init())
   }
 
   public func getPatchDeployment(
     request: GetPatchDeploymentRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudOsconfigV1.PatchDeployment {
+  ) async throws -> GoogleCloudOSConfigV1.PatchDeployment {
     throw GoogleCloudGax.RequestError.unimplemented
   }
 
   public func getPatchDeployment(
     name: Swift.String,
-  ) async throws -> GoogleCloudOsconfigV1.PatchDeployment {
+  ) async throws -> GoogleCloudOSConfigV1.PatchDeployment {
     let request = GetPatchDeploymentRequest().with {
       $0.name = name
     }
@@ -602,14 +602,14 @@ extension Clients.OsConfigServiceProtocol {
   }
 
   public func listPatchDeployments(request: ListPatchDeploymentsRequest) async throws
-    -> GoogleCloudOsconfigV1.ListPatchDeploymentsResponse
+    -> GoogleCloudOSConfigV1.ListPatchDeploymentsResponse
   {
     try await self.listPatchDeployments(request: request, options: .init())
   }
 
   public func listPatchDeployments(
     request: ListPatchDeploymentsRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudOsconfigV1.ListPatchDeploymentsResponse {
+  ) async throws -> GoogleCloudOSConfigV1.ListPatchDeploymentsResponse {
     throw GoogleCloudGax.RequestError.unimplemented
   }
 
@@ -623,7 +623,7 @@ extension Clients.OsConfigServiceProtocol {
     byItem: ListPatchDeploymentsRequest, options: GoogleCloudGax.RequestOptions
   ) throws -> any AsyncSequence<PatchDeployment, Swift.Error> {
     let listRpc = {
-      (token: Swift.String) async throws -> GoogleCloudOsconfigV1.ListPatchDeploymentsResponse in
+      (token: Swift.String) async throws -> GoogleCloudOSConfigV1.ListPatchDeploymentsResponse in
       throw GoogleCloudGax.RequestError.unimplemented
     }
     return GoogleCloudGax.PaginatedResponseSequence(listRpc: listRpc)
@@ -658,21 +658,21 @@ extension Clients.OsConfigServiceProtocol {
   }
 
   public func updatePatchDeployment(request: UpdatePatchDeploymentRequest) async throws
-    -> GoogleCloudOsconfigV1.PatchDeployment
+    -> GoogleCloudOSConfigV1.PatchDeployment
   {
     try await self.updatePatchDeployment(request: request, options: .init())
   }
 
   public func updatePatchDeployment(
     request: UpdatePatchDeploymentRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudOsconfigV1.PatchDeployment {
+  ) async throws -> GoogleCloudOSConfigV1.PatchDeployment {
     throw GoogleCloudGax.RequestError.unimplemented
   }
 
   public func updatePatchDeployment(
     patchDeployment: PatchDeployment?,
     updateMask: GoogleCloudWkt.FieldMask?,
-  ) async throws -> GoogleCloudOsconfigV1.PatchDeployment {
+  ) async throws -> GoogleCloudOSConfigV1.PatchDeployment {
     let request = UpdatePatchDeploymentRequest().with {
       $0.patchDeployment = patchDeployment
       $0.updateMask = updateMask
@@ -681,20 +681,20 @@ extension Clients.OsConfigServiceProtocol {
   }
 
   public func pausePatchDeployment(request: PausePatchDeploymentRequest) async throws
-    -> GoogleCloudOsconfigV1.PatchDeployment
+    -> GoogleCloudOSConfigV1.PatchDeployment
   {
     try await self.pausePatchDeployment(request: request, options: .init())
   }
 
   public func pausePatchDeployment(
     request: PausePatchDeploymentRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudOsconfigV1.PatchDeployment {
+  ) async throws -> GoogleCloudOSConfigV1.PatchDeployment {
     throw GoogleCloudGax.RequestError.unimplemented
   }
 
   public func pausePatchDeployment(
     name: Swift.String,
-  ) async throws -> GoogleCloudOsconfigV1.PatchDeployment {
+  ) async throws -> GoogleCloudOSConfigV1.PatchDeployment {
     let request = PausePatchDeploymentRequest().with {
       $0.name = name
     }
@@ -702,20 +702,20 @@ extension Clients.OsConfigServiceProtocol {
   }
 
   public func resumePatchDeployment(request: ResumePatchDeploymentRequest) async throws
-    -> GoogleCloudOsconfigV1.PatchDeployment
+    -> GoogleCloudOSConfigV1.PatchDeployment
   {
     try await self.resumePatchDeployment(request: request, options: .init())
   }
 
   public func resumePatchDeployment(
     request: ResumePatchDeploymentRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudOsconfigV1.PatchDeployment {
+  ) async throws -> GoogleCloudOSConfigV1.PatchDeployment {
     throw GoogleCloudGax.RequestError.unimplemented
   }
 
   public func resumePatchDeployment(
     name: Swift.String,
-  ) async throws -> GoogleCloudOsconfigV1.PatchDeployment {
+  ) async throws -> GoogleCloudOSConfigV1.PatchDeployment {
     let request = ResumePatchDeploymentRequest().with {
       $0.name = name
     }
